@@ -313,3 +313,15 @@ function custom_theme_widgets_init4() {
     ) );
 }
 add_action( 'widgets_init', 'custom_theme_widgets_init4' );
+function custom_theme_widgets_init5() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Topbar Widget', 'your-theme-textdomain' ),
+        'id'            => 'topbar_widget',
+        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_theme_widgets_init5' );

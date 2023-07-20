@@ -10,6 +10,17 @@ Version: 1.0
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+.topbar-links a{
+  color:#f2f2f2 !important;
+  padding-right:12px;
+  margin-right:12px;
+  border-right:1px solid #a9a9a9
+}
+.topbar-links a:last-child{
+  border:none !important;
+}
+
 .text-sm{
   font-size: 14px;
 }

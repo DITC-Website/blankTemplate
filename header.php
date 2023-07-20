@@ -48,6 +48,13 @@
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
+            <div class="topbar-links d-flex align-items-center">
+                <?php
+                if (is_active_sidebar('topbar_widget')) {
+                    dynamic_sidebar('topbar_widget');
+                }
+                ?>
+            </div>
             <div>
                 <?php get_search_form(); ?>
             </div>

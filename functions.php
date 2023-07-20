@@ -41,30 +41,30 @@ add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer()
 {
 ?>
-<script>
-    jQuery(document).ready(function ($) {
-        var deviceAgent = navigator.userAgent.toLowerCase();
-        if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
-            $("html").addClass("ios");
-            $("html").addClass("mobile");
-        }
-        if (deviceAgent.match(/(Android)/)) {
-            $("html").addClass("android");
-            $("html").addClass("mobile");
-        }
-        if (navigator.userAgent.search("MSIE") >= 0) {
-            $("html").addClass("ie");
-        } else if (navigator.userAgent.search("Chrome") >= 0) {
-            $("html").addClass("chrome");
-        } else if (navigator.userAgent.search("Firefox") >= 0) {
-            $("html").addClass("firefox");
-        } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-            $("html").addClass("safari");
-        } else if (navigator.userAgent.search("Opera") >= 0) {
-            $("html").addClass("opera");
-        }
-    });
-</script>
+    <script>
+        jQuery(document).ready(function($) {
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+                $("html").addClass("ios");
+                $("html").addClass("mobile");
+            }
+            if (deviceAgent.match(/(Android)/)) {
+                $("html").addClass("android");
+                $("html").addClass("mobile");
+            }
+            if (navigator.userAgent.search("MSIE") >= 0) {
+                $("html").addClass("ie");
+            } else if (navigator.userAgent.search("Chrome") >= 0) {
+                $("html").addClass("chrome");
+            } else if (navigator.userAgent.search("Firefox") >= 0) {
+                $("html").addClass("firefox");
+            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                $("html").addClass("safari");
+            } else if (navigator.userAgent.search("Opera") >= 0) {
+                $("html").addClass("opera");
+            }
+        });
+    </script>
 <?php
 }
 add_filter('document_title_separator', 'blankslate_document_title_separator');
@@ -166,8 +166,8 @@ function blankslate_enqueue_comment_reply_script()
 function blankslate_custom_pings($comment)
 {
 ?>
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url(comment_author_link()); ?>
-</li>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url(comment_author_link()); ?>
+    </li>
 <?php
 }
 add_filter('get_comments_number', 'blankslate_comment_count', 0);
@@ -182,10 +182,11 @@ function blankslate_comment_count($count)
         return $count;
     }
 }
-function register_my_menu() {
-    register_nav_menu('header-menu',__( 'Header Menu' ));
-  }
-  add_action( 'init', 'register_my_menu' );
+function register_my_menu()
+{
+    register_nav_menu('header-menu', __('Header Menu'));
+}
+add_action('init', 'register_my_menu');
 // create a walker for wordpress menu
 /**
  * Create HTML list of nav menu items.
@@ -194,16 +195,18 @@ function register_my_menu() {
  * @see    http://wordpress.stackexchange.com/q/14037/
  * @author toscho, http://toscho.de
  */
-add_filter( 'nav_menu_link_attributes', 'nav_menu_link_class', 10, 2 );
-function nav_menu_link_class( $atts, $item ) {
-    if(  $item->has_children ) {
+add_filter('nav_menu_link_attributes', 'nav_menu_link_class', 10, 2);
+function nav_menu_link_class($atts, $item)
+{
+    if ($item->has_children) {
         $class         = 'has-ripple';
         $atts['class'] = $class;
     }
 
     return $atts;
 }
-class Blank_Slate_Walker extends Walker_Nav_Menu {
+class Blank_Slate_Walker extends Walker_Nav_Menu
+{
     /**
      * Start the element output.
      *
@@ -214,114 +217,158 @@ class Blank_Slate_Walker extends Walker_Nav_Menu {
      * @return void
      */
     // apply class if parent if menu has children
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+    {
         // add classes to li
-        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
-        $class_names = join( ' dropdown ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+        $classes     = empty($item->classes) ? array() : (array) $item->classes;
+        $class_names = join(' dropdown ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
         // $class_names = ' class="menu-item menu-item-' . $item->ID . '"';
-        $class_names = ' class="menu-item menu-item-' . $item->ID . ' ' . esc_attr( $class_names ) . '"';
+        $class_names = ' class="menu-item menu-item-' . $item->ID . ' ' . esc_attr($class_names) . '"';
         // add li to output
         $output .= "<li $class_names>";
         // add anchor to output
         $attributes  = '';
-        ! empty ( $item->attr_title )
-        and $attributes .= ' title="'  . esc_attr( $item->attr_title ) .'"';
-        ! empty ( $item->target )
-        and $attributes .= ' target="' . esc_attr( $item->target     ) .'"';
-        ! empty ( $item->xfn )
-        and $attributes .= ' rel="'    . esc_attr( $item->xfn        ) .'"';
-        ! empty ( $item->url )
-        and $attributes .= ' href="'   . esc_attr( $item->url        ) .'"';
-        $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-        $title = apply_filters( 'the_title', $item->title, $item->ID );
+        !empty($item->attr_title)
+            and $attributes .= ' title="'  . esc_attr($item->attr_title) . '"';
+        !empty($item->target)
+            and $attributes .= ' target="' . esc_attr($item->target) . '"';
+        !empty($item->xfn)
+            and $attributes .= ' rel="'    . esc_attr($item->xfn) . '"';
+        !empty($item->url)
+            and $attributes .= ' href="'   . esc_attr($item->url) . '"';
+        $attributes .= ' class="menu-link ' . ($depth > 0 ? 'sub-menu-link' : 'main-menu-link') . '"';
+        $title = apply_filters('the_title', $item->title, $item->ID);
         // $title = apply_filters( 'nav_menu_item_title', $item->title, $item, $args, $depth );
-        if($this->has_children)
-        {
+        if ($this->has_children) {
             $item_output = "<a $attributes>$title <i class='bi bi-chevron-down'></i></a>";
-        }else{
+        } else {
             $item_output = "<a $attributes>$title</a>";
-
         }
         // add anchor to output
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
-
-   
 }
 
- // custom logo
- function themename_custom_logo_setup() {
+// custom logo
+function themename_custom_logo_setup()
+{
     $defaults = array(
         'height'               => 100,
         'width'                => 400,
         'flex-height'          => true,
         'flex-width'           => true,
-        'header-text'          => array( 'site-title', 'site-description' ),
-        'unlink-homepage-logo' => true, 
+        'header-text'          => array('site-title', 'site-description'),
+        'unlink-homepage-logo' => true,
     );
-    add_theme_support( 'custom-logo', $defaults );
+    add_theme_support('custom-logo', $defaults);
 }
-add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+add_action('after_setup_theme', 'themename_custom_logo_setup');
 
 // widget area 
-function custom_theme_widgets_init() {
-    register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widget 1', 'your-theme-textdomain' ),
+function custom_theme_widgets_init()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget 1', 'your-theme-textdomain'),
         'id'            => 'footer_widget1',
-        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
-    ) );
+    ));
 }
-add_action( 'widgets_init', 'custom_theme_widgets_init' );
-function custom_theme_widgets_init2() {
-    register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widget 2', 'your-theme-textdomain' ),
+add_action('widgets_init', 'custom_theme_widgets_init');
+function custom_theme_widgets_init2()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget 2', 'your-theme-textdomain'),
         'id'            => 'footer_widget2',
-        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
-    ) );
+    ));
 }
-add_action( 'widgets_init', 'custom_theme_widgets_init2' );
-function custom_theme_widgets_init3() {
-    register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widget 3', 'your-theme-textdomain' ),
+add_action('widgets_init', 'custom_theme_widgets_init2');
+function custom_theme_widgets_init3()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget 3', 'your-theme-textdomain'),
         'id'            => 'footer_widget3',
-        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
-    ) );
+    ));
 }
-add_action( 'widgets_init', 'custom_theme_widgets_init3' );
+add_action('widgets_init', 'custom_theme_widgets_init3');
 
-function custom_theme_widgets_init4() {
-    register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widget 4', 'your-theme-textdomain' ),
+function custom_theme_widgets_init4()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget 4', 'your-theme-textdomain'),
         'id'            => 'footer_widget4',
-        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
-    ) );
+    ));
 }
-add_action( 'widgets_init', 'custom_theme_widgets_init4' );
-function custom_theme_widgets_init5() {
-    register_sidebar( array(
-        'name'          => esc_html__( 'Topbar Widget', 'your-theme-textdomain' ),
+add_action('widgets_init', 'custom_theme_widgets_init4');
+function custom_theme_widgets_init5()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Topbar Widget', 'your-theme-textdomain'),
         'id'            => 'topbar_widget',
-        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4>',
         'after_title'   => '</h4>',
-    ) );
+    ));
 }
-add_action( 'widgets_init', 'custom_theme_widgets_init5' );
+add_action('widgets_init', 'custom_theme_widgets_init5');
+
+function custom_theme_widgets_init6()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Address Widget', 'your-theme-textdomain'),
+        'id'            => 'address_widget',
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+}
+
+add_action('widgets_init', 'custom_theme_widgets_init6');
+function custom_theme_widgets_init7()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Map Widget', 'your-theme-textdomain'),
+        'id'            => 'map_widget',
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+}
+add_action('widgets_init', 'custom_theme_widgets_init7');
+function custom_theme_widgets_init8()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Contact Widget', 'your-theme-textdomain'),
+        'id'            => 'contact_widget',
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+}
+add_action('widgets_init', 'custom_theme_widgets_init8');

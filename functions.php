@@ -246,11 +246,70 @@ class Blank_Slate_Walker extends Walker_Nav_Menu {
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
 
-    function end_lvl(&$output, $depth=0, $args=null) {
-        if($depth == 1)
-        {
-            $item_output = "</ul>\n<i class='bi bi-list mobile-nav-toggle'></i>";
-            $output .= apply_filters( 'walker_nav_menu_end_lvl', $item_output, $depth, $args );
-        }
-    } 
+   
 }
+
+ // custom logo
+ function themename_custom_logo_setup() {
+    $defaults = array(
+        'height'               => 100,
+        'width'                => 400,
+        'flex-height'          => true,
+        'flex-width'           => true,
+        'header-text'          => array( 'site-title', 'site-description' ),
+        'unlink-homepage-logo' => true, 
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+
+// widget area 
+function custom_theme_widgets_init() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Footer Widget 1', 'your-theme-textdomain' ),
+        'id'            => 'footer_widget1',
+        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_theme_widgets_init' );
+function custom_theme_widgets_init2() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Footer Widget 2', 'your-theme-textdomain' ),
+        'id'            => 'footer_widget2',
+        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_theme_widgets_init2' );
+function custom_theme_widgets_init3() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Footer Widget 3', 'your-theme-textdomain' ),
+        'id'            => 'footer_widget3',
+        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_theme_widgets_init3' );
+
+function custom_theme_widgets_init4() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Footer Widget 4', 'your-theme-textdomain' ),
+        'id'            => 'footer_widget4',
+        'description'   => esc_html__( 'Add widgets here to display in the custom widget area.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_theme_widgets_init4' );

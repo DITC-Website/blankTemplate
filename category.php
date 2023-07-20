@@ -1,10 +1,24 @@
 <?php get_header(); ?>
-<header class="header">
-<h1 class="entry-title" itemprop="name"><?php single_term_title(); ?></h1>
-<div class="archive-meta" itemprop="description"><?php if ( '' != get_the_archive_description() ) { echo esc_html( get_the_archive_description() ); } ?></div>
-</header>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<?php get_template_part( 'entry' ); ?>
-<?php endwhile; endif; ?>
-<?php get_template_part( 'nav', 'below' ); ?>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2><?php single_term_title(); ?></h1>
+            </h2>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                <?php get_template_part( 'entry' ); ?>
+                <?php endwhile; endif; ?>
+                <?php get_template_part( 'nav', 'below' ); ?>
+            </div>
+        </div>
+    </div>
+</section>
 <?php get_footer(); ?>

@@ -9,6 +9,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.text-sm{
+  font-size: 14px;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -36,6 +40,14 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+.topbar {
+  background: #551616;
+  height: 40px;
+  font-size: 14px;
+  transition: all 0.5s;
+  color: #fff;
+  padding: 0;
+}
 .back-to-top {
   position: fixed;
   visibility: hidden;
@@ -74,7 +86,32 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1)
 }
+
+.topbar .contact-info i a {
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.topbar .contact-info i a, .topbar .contact-info i span {
+  padding-left: 5px;
+  color: #fff;
+}
+
+.topbar .contact-info i {
+    font-style: normal;
+    color: #fff;
+    line-height: 0;
+}
+
+.topbar .social-links a {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 0;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+    
 
 #header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -99,7 +136,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 70px;
 }
 
 /*--------------------------------------------------------------
@@ -572,9 +609,8 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 18px 0;
-  background: #f8f9fa;
+  background: #f2f2f2;
   min-height: 40px;
-  margin-top: 80px;
 }
 
 .breadcrumbs h2 {

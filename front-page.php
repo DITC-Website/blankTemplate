@@ -30,13 +30,13 @@
                 $latest_posts->the_post();
             ?>
 
-                <!-- Custom HTML structure for the latest post -->
-                <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                  <h5 style="font-size:14px;font-weight:600;color:black" class="mb-0"><?php the_title(); ?></h5>
-                  <span style="font-size:13px;color:brown"><i class="bi bi-calendar3"></i>
-                    <?php echo get_the_date(); ?></span>
-                </a>
-                <hr>
+            <!-- Custom HTML structure for the latest post -->
+            <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+              <h5 style="font-size:14px;font-weight:600;color:black" class="mb-0"><?php the_title(); ?></h5>
+              <span style="font-size:13px;color:brown"><i class="bi bi-calendar3"></i>
+                <?php echo get_the_date(); ?></span>
+            </a>
+            <hr>
             <?php
               }
             }
@@ -60,9 +60,9 @@
         while (have_posts()) {
           the_post();
       ?>
-          <div class="post-content">
-            <?php the_content(); ?>
-          </div>
+      <div class="post-content">
+        <?php the_content(); ?>
+      </div>
       <?php
         }
       }

@@ -41,30 +41,30 @@ add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer()
 {
 ?>
-    <script>
-        jQuery(document).ready(function($) {
-            var deviceAgent = navigator.userAgent.toLowerCase();
-            if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
-                $("html").addClass("ios");
-                $("html").addClass("mobile");
-            }
-            if (deviceAgent.match(/(Android)/)) {
-                $("html").addClass("android");
-                $("html").addClass("mobile");
-            }
-            if (navigator.userAgent.search("MSIE") >= 0) {
-                $("html").addClass("ie");
-            } else if (navigator.userAgent.search("Chrome") >= 0) {
-                $("html").addClass("chrome");
-            } else if (navigator.userAgent.search("Firefox") >= 0) {
-                $("html").addClass("firefox");
-            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-                $("html").addClass("safari");
-            } else if (navigator.userAgent.search("Opera") >= 0) {
-                $("html").addClass("opera");
-            }
-        });
-    </script>
+<script>
+    jQuery(document).ready(function ($) {
+        var deviceAgent = navigator.userAgent.toLowerCase();
+        if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+            $("html").addClass("ios");
+            $("html").addClass("mobile");
+        }
+        if (deviceAgent.match(/(Android)/)) {
+            $("html").addClass("android");
+            $("html").addClass("mobile");
+        }
+        if (navigator.userAgent.search("MSIE") >= 0) {
+            $("html").addClass("ie");
+        } else if (navigator.userAgent.search("Chrome") >= 0) {
+            $("html").addClass("chrome");
+        } else if (navigator.userAgent.search("Firefox") >= 0) {
+            $("html").addClass("firefox");
+        } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+            $("html").addClass("safari");
+        } else if (navigator.userAgent.search("Opera") >= 0) {
+            $("html").addClass("opera");
+        }
+    });
+</script>
 <?php
 }
 add_filter('document_title_separator', 'blankslate_document_title_separator');
@@ -166,8 +166,8 @@ function blankslate_enqueue_comment_reply_script()
 function blankslate_custom_pings($comment)
 {
 ?>
-    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url(comment_author_link()); ?>
-    </li>
+<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url(comment_author_link()); ?>
+</li>
 <?php
 }
 add_filter('get_comments_number', 'blankslate_comment_count', 0);
@@ -265,19 +265,6 @@ function themename_custom_logo_setup()
 add_action('after_setup_theme', 'themename_custom_logo_setup');
 
 // widget area 
-function custom_theme_widgets_init()
-{
-    register_sidebar(array(
-        'name'          => esc_html__('Footer Widget 1', 'your-theme-textdomain'),
-        'id'            => 'footer_widget1',
-        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ));
-}
-add_action('widgets_init', 'custom_theme_widgets_init');
 function custom_theme_widgets_init2()
 {
     register_sidebar(array(

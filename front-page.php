@@ -69,6 +69,7 @@
       ?>
     </div>
   </section>
+  <?php if(is_active_sidebar('address_widget')):?>
   <section style="background:#f8f9fa">
     <div class="container">
       <div class="row">
@@ -87,6 +88,16 @@
           ?>
         </div>
       </div>
+    </div>
+  </section>
+  <?php endif;?>
+  <section id="clients" class="clients section-bg mt-5">
+    <div class="container">
+      <?php
+          if (is_active_sidebar('advert_widget')) {
+            dynamic_sidebar('advert_widget');
+          }
+          ?>
     </div>
   </section>
 

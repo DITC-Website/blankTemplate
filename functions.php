@@ -349,7 +349,7 @@ add_action('widgets_init', 'custom_theme_widgets_init7');
 function custom_theme_widgets_init8()
 {
     register_sidebar(array(
-        'name'          => esc_html__('Contact Widget', 'your-theme-textdomain'),
+        'name'          => esc_html__('Contact Widget Topbar', 'your-theme-textdomain'),
         'id'            => 'contact_widget',
         'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -359,3 +359,17 @@ function custom_theme_widgets_init8()
     ));
 }
 add_action('widgets_init', 'custom_theme_widgets_init8');
+
+function custom_theme_widgets_init9()
+{
+    register_sidebar(array(
+        'name'          => esc_html__('Advert Widget', 'your-theme-textdomain'),
+        'id'            => 'advert_widget',
+        'description'   => esc_html__('Add widgets here to display in the custom widget area.', 'your-theme-textdomain'),
+        'before_widget' => '<div id="%1$s" class="row">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+}
+add_action('widgets_init', 'custom_theme_widgets_init9');

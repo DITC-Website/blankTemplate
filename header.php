@@ -9,16 +9,24 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/animate.css/animate.min.css"
+        rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/bootstrap/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+        rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/boxicons/css/boxicons.min.css"
+        rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/glightbox/css/glightbox.min.css"
+        rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/vendor/swiper/swiper-bundle.min.css"
+        rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/style.css" rel="stylesheet">
@@ -30,10 +38,14 @@
     <section id="topbar" class="topbar d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <?php if (is_active_sidebar('contact_widget')) : ?>
-                <div class="contact-info d-flex align-items-center">
+            <div class="contact-info d-flex align-items-center">
 
+                <?php
+                if (is_active_sidebar('contact_widget')) {
                     dynamic_sidebar('contact_widget');
-                </div>
+                }
+                ?>
+            </div>
             <?php endif; ?>
             <div class="social-links d-none d-md-flex align-items-center">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
